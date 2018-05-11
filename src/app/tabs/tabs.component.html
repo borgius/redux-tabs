@@ -1,0 +1,12 @@
+<ul class="nav nav-tabs">
+  <li *ngFor="let tab of (tabs | async); let i = index" (click)="selectTab(i)" class="nav-item">
+    <a class="nav-link" [class.active]="i==(active | async)">{{tab.title}}
+      <button type="button" class="close ml-2" aria-label="Close" (click)="closeTab(i)">
+        <span class="" aria-hidden="true">&times;</span>
+      </button>
+    </a>
+  </li>
+</ul>
+<div class="tab-content clearfix p-3">
+  <div *ngFor="let tab of (tabs | async); let i = index" [class.active]="i==(active | async)" class="tab-pane" [innerHTML]="tab.content"></div>
+</div>
